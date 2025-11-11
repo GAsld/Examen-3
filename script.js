@@ -1,45 +1,32 @@
+const formulario = document.getElementById("pedidoForm");
+
 function calcularTotal() {
+    var total = 0;
 
     var especialidad = document.getElementById('especialidad').value;
-    var precioBase = 0;
-
     if (especialidad == "clasica") {
-        precioBase = 80;}
-
+        total = 80;}
     else if (especialidad == "bbq") {
-        precioBase = 100;}
-
+        total = 100;}
     else if (especialidad == "tocino") {
-        precioBase = 120;}
-
+        total = 120;}
     else if (especialidad == "doble") {
-        precioBase = 150;}
-
+        total = 150;}
     else if (especialidad == "hawaiana") {
-        precioBase = 180;}
+        total = 180;}
 
-        var pan = document.getElementsByClassName('radio-list').value;
-
-    if (pan == "clasico"){
-        precioBase = 0;}
-
-    else if (pan == "ajonjoli"){
-        precioBase = 20;}
-    
-    else if (pan == "integal"){
-        precioBase = 20;}
-
-    else if (pan == "brioche"){
-        precioBase = 50;}
-
-        var ingredientes = formularm.ingredientes.value;
-        
-
-    if (formulario.queso.checked) 
-    {
-        total += 5;
+    var pan = formulario.pan.value;
+    if (pan == "clasico") {
+        total += 0;
     }
+    else if (pan == "ajonjoli"){
+        total += 20;}
+    else if (pan == "integal"){
+        total += 20;}
+    else if (pan == "brioche"){
+        total += 50;}
 
+    if (formulario.queso.checked) { total += 5; }
     if (formulario.cebolla.checked) 
     {
         total += 5;
@@ -49,7 +36,8 @@ function calcularTotal() {
     {
         total += 5;
     }
-        if (formulario.dobleQueso.checked) 
+
+    if (formulario.dobleQueso.checked) 
     {
         total += 5;
     }
@@ -108,7 +96,7 @@ function calcularTotal() {
         total += 5;
     }
 
-    if (formulario.huebo.checked)
+    if (formulario.huevo.checked)
     {
         total+= 5;
     }   
@@ -132,6 +120,16 @@ function calcularTotal() {
     {
         total+= 5;
     }   
-        }
+
+    var cantidad = formulario.cantidad.value;
+    total *= cantidad;
+    
+    if (formulario.domicilio.checked)
+    {
+        total += 30;
+    }
+
+    document.getElementById('total').innerText = total;
+}
 
 
